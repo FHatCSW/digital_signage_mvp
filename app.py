@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, make_response
 import json
 
 app = Flask(__name__)
@@ -8,6 +8,13 @@ app = Flask(__name__)
 def load_site_structure():
     with open('site_structure.json') as f:
         return json.load(f)
+
+
+@app.after_request
+def add_header(response):
+    response.cache_control.max_age = 31536000  # 1 year
+    return response
+
 
 
 @app.route('/')
@@ -39,4 +46,4 @@ def sitemap():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=8080, debug=True)

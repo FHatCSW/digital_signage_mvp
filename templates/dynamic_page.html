@@ -110,7 +110,7 @@
 <body>
     <div class="full-page-image-container">
         {% if 'image' in page %}
-            <img src="{{ url_for('static', filename=page.image) }}" alt="{{ page.name }}">
+            <img src="{{ url_for('static', filename=page.image) }}" loading="lazy" alt="{{ page.name }}">
         {% endif %}
 
         {% if 'iframe' in page %}
@@ -170,7 +170,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <img src="{{ url_for('static', filename='qr_codes/qr_linkedin.png') }}" alt="LinkedIn QR Code" class="img-fluid">
+                    <img src="{{ url_for('static', filename='qr_codes/qr_linkedin.png') }}" loading="lazy" alt="LinkedIn QR Code" class="img-fluid">
                 </div>
             </div>
         </div>
@@ -187,15 +187,15 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <img src="{{ url_for('static', filename='qr_codes/qr_instagram.png') }}" alt="Instagram QR Code" class="img-fluid">
+                    <img src="{{ url_for('static', filename='qr_codes/qr_instagram.png') }}" loading="lazy" alt="Instagram QR Code" class="img-fluid">
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Optional Bootstrap JavaScript and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js" defer></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
 </body>
 </html>
