@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sitemap</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .list-group-item {
+            padding-left: 20px;
+        }
+        .child-page {
+            padding-left: 40px;
+        }
+        .hidden-page {
+            display: none; /* Hides the page link */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4 text-center">Sitemap</h1>
+        <ul class="list-group">
+            {% macro render_page(page, pages_by_target, rendered, level=0) %}
+                <!-- Render the current page but hide it using CSS -->
+                {% if page.name not in rendered %}
+                    <li class="list-group-item hidden-page" style="padding-left: {{ level * 20 }}px;">
+                        <a href="{{ url_for('render_page', page_name=page.name) }}">{{ page.name | capitalize }}</a>
+                    </li>
+                    {% set rendered = rendered + [page.name] %}
+                {% endif %}
+
+                <!-- Render the children pages using buttons' text if they haven't been rendered -->
+                {% if 'buttons' in page %}
+                    {% for button in page.buttons %}
+                        {% set child_page = pages_by_target[button.target] %}
+                        {% if child_page.name not in rendered %}
+                            <li class="list-group-item" style="padding-left: {{ (level + 1) * 20 }}px;">
+                                <a href="{{ url_for('render_page', page_name=button.target) }}">{{ button.text }}</a>
+                            </li>
+                            {{ render_page(child_page, pages_by_target, rendered, level + 1) }}
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endmacro %}
+
+            <!-- Initialize rendered list and start rendering from the index page -->
+            {{ render_page(pages_by_target['index'], pages_by_target, []) }}
+        </ul>
+    </div>
+
+    <!-- Optional Bootstrap JavaScript and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.amazonaws.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

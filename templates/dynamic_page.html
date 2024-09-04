@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.name | capitalize }}</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        .btn-overlay {
+            position: absolute;
+            padding: 20px 40px; /* Double the padding for a bigger button */
+            font-size: 2rem; /* Double the font size */
+            background-color: white; /* White filling */
+            color: black; /* Black text color */
+            border: 4px solid black; /* Thicker black border */
+            border-radius: 10px; /* Larger border radius */
+            text-align: center;
+            pointer-events: auto;
+            font-weight: bold; /* Bold text for better visibility */
+            animation: pulse 2s infinite; /* Pulsating effect */
+            transition: all 0.3s ease-in-out; /* Smooth transition for hover */
+        }
+
+        /* Pulsating animation */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            }
+            50% {
+                transform: scale(1.1); /* Slightly increase size */
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Add glow effect */
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            }
+        }
+
+        /* Hover effect for better interactivity */
+        .btn-overlay:hover {
+            background-color: black; /* Background changes to black */
+            color: white; /* Text changes to white */
+            border-color: white; /* Border becomes white */
+            transform: scale(1.15); /* Slightly enlarge on hover */
+        }
+        .full-page-image-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+        .full-page-image-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .iframe-container iframe {
+            width: 100%;
+            height: 80vh;
+            border: none;
+        }
+        /* Social media and navigation buttons */
+        .btn-overlay {
+            position: absolute;
+            padding: 20px 40px; /* Double the padding for a bigger button */
+            font-size: 2rem; /* Double the font size */
+            background-color: white; /* White filling */
+            color: black; /* Black text color */
+            border: 4px solid black; /* Thicker black border */
+            border-radius: 10px; /* Larger border radius */
+            text-align: center;
+            pointer-events: auto;
+            font-weight: bold; /* Bold text for better visibility */
+            animation: pulse 2s infinite; /* Pulsating effect */
+            transition: all 0.3s ease-in-out; /* Smooth transition for hover */
+        }
+
+        /* Pulsating animation */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            }
+            50% {
+                transform: scale(1.1); /* Slightly increase size */
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Add glow effect */
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            }
+        }
+
+        /* Hover effect for better interactivity */
+        .btn-overlay:hover {
+            background-color: black; /* Background changes to black */
+            color: white; /* Text changes to white */
+            border-color: white; /* Border becomes white */
+            transform: scale(1.2); /* Slightly enlarge on hover */
+        }
+
+        /* Social media and navigation buttons */
+        .social-media-nav-buttons {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            gap: 20px; /* Increase the gap between buttons */
+            align-items: center;
+        }
+
+        .social-media-nav-buttons a,
+        .navigation-buttons a {
+            color: white;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px; /* Double the padding */
+            border-radius: 50%;
+            text-align: center;
+            width: 80px; /* Double the width */
+            height: 80px; /* Double the height */
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem; /* Double the icon size */
+            transition: all 0.3s ease-in-out;
+        }
+
+        .navigation-buttons a {
+            border-radius: 10px; /* Adjust the border radius for navigation buttons */
+            padding: 15px 30px; /* Increase padding for navigation buttons */
+            width: auto; /* Let navigation buttons adjust width */
+            height: auto;
+        }
+
+        .social-media-nav-buttons a:hover,
+        .navigation-buttons a:hover {
+            background-color: black; /* Change background on hover */
+            color: white;
+            transform: scale(1.2); /* Slightly enlarge on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="full-page-image-container">
+        {% if 'image' in page %}
+            <img src="{{ url_for('static', filename=page.image) }}" alt="{{ page.name }}">
+        {% endif %}
+
+        {% if 'iframe' in page %}
+            <div class="iframe-container">
+                <iframe src="{{ page.iframe }}"></iframe>
+            </div>
+        {% endif %}
+
+        {% for button in page.buttons %}
+            <a href="{{ url_for('render_page', page_name=button.target) }}"
+               class="btn btn-primary btn-overlay"
+               style="
+                top: {{ button.position.top }};
+                {% if button.position.left %} left: {{ button.position.left }}; {% endif %}
+                {% if button.position.right %} right: {{ button.position.right }}; {% endif %}">
+                {{ button.text }}
+            </a>
+        {% endfor %}
+    </div>
+
+    <!-- Social Media and Navigation Buttons -->
+    <div class="social-media-nav-buttons">
+        {% if page.name != 'index' %}
+        <!-- Back Button -->
+        <div class="navigation-buttons">
+            <a href="javascript:history.back()">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+        </div>
+        <!-- Home Button -->
+        <div class="navigation-buttons">
+            <a href="{{ url_for('render_page', page_name='index') }}">
+                <i class="fas fa-home"></i>
+            </a>
+        </div>
+        {% endif %}
+        <!-- Social Media Buttons -->
+        <a href="#" data-toggle="modal" data-target="#linkedinModal">
+            <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="#" data-toggle="modal" data-target="#instagramModal">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="{{ url_for('render_page', page_name='sitemap') }}">
+            <i class="fas fa-sitemap"></i>
+        </a>
+    </div>
+
+    <!-- LinkedIn QR Modal -->
+    <div class="modal fade" id="linkedinModal" tabindex="-1" aria-labelledby="linkedinModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="linkedinModalLabel">LinkedIn QR Code</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img src="{{ url_for('static', filename='qr_codes/qr_linkedin.png') }}" alt="LinkedIn QR Code" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Instagram QR Modal -->
+    <div class="modal fade" id="instagramModal" tabindex="-1" aria-labelledby="instagramModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="instagramModalLabel">Instagram QR Code</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img src="{{ url_for('static', filename='qr_codes/qr_instagram.png') }}" alt="Instagram QR Code" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional Bootstrap JavaScript and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

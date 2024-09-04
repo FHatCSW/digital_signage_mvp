@@ -1,0 +1,282 @@
+{
+  "pages": [
+    {
+      "name": "index",
+      "image": "images/index.png",
+      "buttons": [
+        {
+          "text": "Events",
+          "target": "events",
+          "position": { "top": "30%", "right": "15%" }
+        },
+        {
+          "text": "News",
+          "target": "news",
+          "position": { "top": "20%", "left": "15%" }
+        },
+        {
+          "text": "Über uns",
+          "target": "ueber_uns",
+          "position": { "top": "40%", "left": "50%" }
+        },
+        {
+          "text": "Lehre & Weiterbildung",
+          "target": "lehre_weiterbildung",
+          "position": { "top": "80%", "right": "15%" }
+        },
+        {
+          "text": "Leistungen",
+          "target": "leistungen",
+          "position": { "top": "75%", "left": "10%" }
+        },
+        {
+          "text": "Räume",
+          "target": "raeume",
+          "position": { "top": "70%", "left": "30%" }
+        }
+      ]
+    },
+    {
+      "name": "events",
+      "parent": "index",
+      "iframe": "https://www.campus-schwarzwald.de/events/"
+    },
+    {
+      "name": "news",
+      "parent": "index",
+      "iframe": "https://www.campus-schwarzwald.de/campus-news/"
+    },
+    {
+      "name": "raeume",
+      "parent": "index",
+      "iframe": "https://www.campus-schwarzwald.de/raeume-und-buchungen/"
+    },
+    {
+      "name": "ueber_uns",
+      "image": "images/ueber_uns.png",
+      "parent": "index",
+      "buttons": [
+        {
+          "text": "About",
+          "target": "about",
+          "position": { "top": "40%", "left": "25%" }
+        },
+        {
+          "text": "Campus Partner",
+          "target": "campus_partner",
+          "position": { "top": "45%", "left": "60%" }
+        },
+        {
+          "text": "Campus Team",
+          "target": "campus_team",
+          "position": { "top": "70%", "left": "40%" }
+        }
+      ]
+    },
+    {
+      "name": "about",
+      "parent": "ueber_uns",
+      "iframe": "https://www.campus-schwarzwald.de/campus-schwarzwald/"
+    },
+    {
+      "name": "campus_partner",
+      "parent": "ueber_uns",
+      "iframe": "https://www.campus-schwarzwald.de/campus-partner/"
+    },
+    {
+      "name": "campus_team",
+      "parent": "ueber_uns",
+      "iframe": "https://www.campus-schwarzwald.de/campus-team/"
+    },
+    {
+      "name": "lehre_weiterbildung",
+      "image": "images/lehre_weiterbildung.png",
+      "parent": "index",
+      "buttons": [
+        {
+          "text": "Universitäre Lehre",
+          "target": "universitaere_lehre",
+          "position": { "top": "60%", "left": "15%" }
+        },
+        {
+          "text": "Berufliche Weiterbildung",
+          "target": "berufliche_weiterbildung",
+          "position": { "top": "35%", "right": "15%" }
+        },
+        {
+          "text": "ACTIVE Student",
+          "target": "active_student",
+          "position": { "top": "65%", "left": "60%" }
+        }
+      ]
+    },
+    {
+      "name": "universitaere_lehre",
+      "parent": "lehre_weiterbildung",
+      "iframe": "https://www.campus-schwarzwald.de/studium/"
+    },
+    {
+      "name": "berufliche_weiterbildung",
+      "parent": "lehre_weiterbildung",
+      "iframe": "https://ahp-pforzheim.de/program/smart-systems-engineering/"
+    },
+    {
+      "name": "active_student",
+      "parent": "lehre_weiterbildung",
+      "iframe": "https://www.activestudent.de"
+    },
+    {
+      "name": "leistungen",
+      "image": "images/leistungen.png",
+      "parent": "index",
+      "buttons": [
+        {
+          "text": "Führung & Management",
+          "target": "fuehrung_management",
+          "position": { "top": "60%", "right": "5%" }
+        },
+        {
+          "text": "Nachhaltigkeit",
+          "target": "nachhaltigkeit",
+          "position": { "top": "38%", "left": "5%" }
+        },
+        {
+          "text": "Digitalisierung",
+          "target": "digitalisierung",
+          "position": { "top": "85%", "right": "30%" }
+        }
+      ]
+    },
+    {
+      "name": "fuehrung_management",
+      "image": "images/fuehrung_management.png",
+      "parent": "leistungen",
+      "buttons": [
+        {
+          "text": "Innovationsdienstleistungen",
+          "target": "innovationsdienstleistungen",
+          "position": { "top": "30%", "left": "30%" }
+        },
+        {
+          "text": "New Work & Leadership",
+          "target": "new_work_leadership",
+          "position": { "top": "55%", "left": "30%" }
+        }
+      ]
+    },
+    {
+      "name": "innovationsdienstleistungen",
+      "parent": "fuehrung_management",
+      "iframe": "https://www.campus-schwarzwald.de/leistungen/fuehrung-und-management/innovationsdienstleistungen/"
+    },
+    {
+      "name": "new_work_leadership",
+      "parent": "fuehrung_management",
+      "iframe": "https://www.campus-schwarzwald.de/leistungen/fuehrung-und-management/new-work-und-leadership/"
+    },
+    {
+      "name": "nachhaltigkeit",
+      "image": "images/nachhaltigkeit.png",
+      "parent": "leistungen",
+      "buttons": [
+        {
+          "text": "Massentaugliche Brennstoffzelle",
+          "target": "brennstoffzelle",
+          "position": { "top": "80%", "left": "10%" }
+        },
+        {
+          "text": "CO2 Reduktion",
+          "target": "co2_reduktion",
+          "position": { "top": "50%", "right": "45%" }
+        },
+        {
+          "text": "H2 Produktion",
+          "target": "h2_produktion",
+          "position": { "top": "70%", "left": "40%" }
+        },
+        {
+          "text": "Energetische Optimierung",
+          "target": "energetische_optimierung",
+          "position": { "top": "45%", "right": "15%" }
+        },
+        {
+          "text": "H2BlackForest GmbH",
+          "target": "h2blackforest",
+          "position": { "top": "65%", "right": "8%" }
+        }
+      ]
+    },
+    {
+      "name": "brennstoffzelle",
+      "parent": "nachhaltigkeit",
+      "iframe": "https://www.campus-schwarzwald.de/leistungen/nachhaltigkeit/massentaugliche-brennstoffzellen/"
+    },
+    {
+      "name": "co2_reduktion",
+      "parent": "nachhaltigkeit",
+      "iframe": "https://www.campus-schwarzwald.de/leistungen/nachhaltigkeit/co2-reduktion/"
+    },
+    {
+      "name": "h2_produktion",
+      "parent": "nachhaltigkeit",
+      "iframe": "https://www.campus-schwarzwald.de/leistungen/nachhaltigkeit/h2-produktion/"
+    },
+    {
+      "name": "energetische_optimierung",
+      "parent": "nachhaltigkeit",
+      "iframe": "https://example.com"
+    },
+    {
+      "name": "h2blackforest",
+      "parent": "nachhaltigkeit",
+      "iframe": "https://h2blackforest.de"
+    },
+    {
+      "name": "digitalisierung",
+      "image": "images/digitalisierung.png",
+      "parent": "leistungen",
+      "buttons": [
+        {
+          "text": "Digital Twin",
+          "target": "digital_twin",
+          "position": { "top": "80%", "left": "10%" }
+        },
+        {
+          "text": "Funktechnologien",
+          "target": "funktechnologien",
+          "position": { "top": "50%", "left": "15%" }
+        },
+        {
+          "text": "Industrial Security",
+          "target": "industrial_security",
+          "position": { "top": "50%", "right": "25%" }
+        },
+        {
+          "text": "Robotik",
+          "target": "robotik",
+          "position": { "top": "80%", "right": "20%" }
+        }
+      ]
+    },
+    {
+      "name": "digital_twin",
+      "parent": "digitalisierung",
+      "iframe": "https://www.campus-schwarzwald.de/leistungen/digitalisierung/digital-twin/"
+    },
+    {
+      "name": "funktechnologien",
+      "parent": "digitalisierung",
+      "iframe": "https://www.campus-schwarzwald.de/leistungen/digitalisierung/funktechnologie/"
+    },
+    {
+      "name": "industrial_security",
+      "parent": "digitalisierung",
+      "iframe": "https://www.campus-schwarzwald.de/leistungen/digitalisierung/industrial-security/"
+    },
+    {
+      "name": "robotik",
+      "parent": "digitalisierung",
+      "iframe": "https://www.campus-schwarzwald.de/leistungen/digitalisierung/robotik/"
+    }
+  ]
+}
