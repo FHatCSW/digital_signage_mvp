@@ -3,6 +3,7 @@ backports.tarfile==1.2.0
 blinker==1.8.2
 click==8.1.7
 flask==3.0.3
+gunicorn==23.0.0
 importlib-metadata==8.0.0
 importlib-resources==6.4.0
 inflect==7.3.1
